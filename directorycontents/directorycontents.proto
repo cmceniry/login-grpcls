@@ -1,0 +1,28 @@
+
+// tag::boilerplate[]
+syntax = "proto3";
+
+package directorycontents;
+// end::boilerplate[]
+
+// tag::path[]
+message Path {
+  string name = 1;
+}
+// end::path[]
+
+// tag::file[]
+message File {
+  string name = 1;
+  int64 size = 2;
+  string mode = 3;
+  string modtime = 4;
+}
+// end::file[]
+
+// tag::lister[]
+service Lister {
+  rpc LS (Path) returns (stream File) {}
+}
+// end::lister[]
+
